@@ -1,3 +1,5 @@
+from flask import Flask, request, jsonify, render_template
+
 # Importer le modèle
 from tensorflow.keras.models import load_model
 import tensorflow as tf
