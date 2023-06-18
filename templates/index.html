@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+                <title>Prédiction de tags</title>
+                    <!-- Importer Bootstrap -->
+                        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                            <!-- Importer jQuery -->
+                                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        </head>
+
+    <body>
+        <div class="container">
+            <h1>Prédiction de tags</h1>
+                <p>Entrez votre question</p>
+                    <form id="question-form">
+                        <div class="form-group">
+                            <label for="question-input">Question</label>
+                                <input type="text" class="form-control" id="question-input" placeholder="Exemple: Comment créer une interface avec Flask?">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                        <div id="result-div" style="display: none;">
+                            <h2>Tags prédits</h2>
+                                <ul id="tags-list" class="list-group"></ul>
+                        </div>
+        </div>
+        <script>
+            // Quand le formulaire est soumis
+            $("#question-form").submit(function(event) {
+            // Empêcher le rechargement de la page
+            event.preventDefault();
+            // Récupérer la question saisie
+            var question = $("#question-input").val();
+            // Envoyer la requête à l'API
+            $.ajax({
+            url: "/api/tags",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({question: question}),
+            success: function(data) {
+            // Afficher le div des résultats
+            $("#result-div").show();
+            // Vider la liste des tags
+            $("#tags-list").empty();
+            // Pour chaque tag prédit
+            for (var i = 0; i < data.length; i++) {
+            // Créer un élément li avec le nom du tag
+            var li = $("<li></li>").text(data[i]).addClass("list-group-item");
+            // Ajouter l'élément li à la liste des tags
+            $("#tags-list").append(li);
+            }
+            },
+            error: function(error) {
+            // Afficher un message d'erreur
+            alert("Une erreur est survenue: " + error.responseText);
+            }
+            });
+            });
+        </script>
+    </body>
+</html>
