@@ -30,7 +30,7 @@ def api_tags():
 @app.route("/")
 def index():
     # Renvoyer le modèle index.html
-    return render_template("index.html")
+    return render_template("test.html")
 
 # Lancer le serveur en mode debug
 if __name__ == "__main__":
