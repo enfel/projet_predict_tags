@@ -16,12 +16,12 @@ une approche de type bag-of-words ;
 
 - Mettre en place une méthode d’évaluation propre, avec une séparation du jeu de données pour l’évaluation.
 
-- Utiliser un logiciel de gestion de versions, par exemple Git, pour suivre les modifications du code final à déployer.
+- Utilisation de Git, pour suivre les modifications du code final à déployer.
  
 
 ## Les données
 
--  Pour cela, vous développez un système de suggestion de tags pour le site. Celui-ci prendra la forme d’un algorithme de machine learning qui assignera automatiquement plusieurs tags pertinents à une question.
+-  Développement d'un algorithme de machine learning qui assignera automatiquement plusieurs tags pertinents à une question.
 
 - Les données ont été filtrés pour ne garder que les questions pertinentes.
 
@@ -32,6 +32,7 @@ une approche de type bag-of-words ;
 - Un notebook de test de différents modèles .
 
 
-- Le point d’entrée d’une API disponible pour le test.
-
 - Une présentation servant de support à la soutenance.
+
+- Adresse API
+https://predict--tags-enfel-d9856c7b227c.herokuapp.com/
